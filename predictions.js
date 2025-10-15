@@ -4,7 +4,7 @@ const raceData = {
   singapore: {
     // This is NOT a sprint weekend
     isSprintWeekend: false,
-    header: "My Predictions for the Singapore GP;",
+    header: "My Predictions for the Singapore GP:",
     predictionTitle: "My Predictions For The Upcoming Singapore Grand Prix",
     poorly: "Kimi Antonelli",
     surprise: "Lewis Hamilton",
@@ -23,7 +23,7 @@ const raceData = {
   usa: {
     // This IS a sprint weekend
     isSprintWeekend: true, 
-    header: "My Predictions for the United States GP;",
+    header: "My Predictions for the United States GP:",
     predictionTitle: "My Predictions For The Upcoming United States Grand Prix",
     // New Sprint Predictions
     sprintPole: "Max Verstappen",
@@ -42,6 +42,8 @@ const raceData = {
     actualPole: "TBD",
     actualP2: "TBD",
     actualP3: "TBD",
+      // New property for actual sprint winner
+    actualSprintWinner: "TBD",
   }
 };
 
@@ -56,6 +58,7 @@ function updatePage(raceKey) {
   // --- NEW: Get references to the sprint prediction containers ---
   const sprintPoleContainer = document.getElementById('sprint-pole-container');
   const sprintWinnerContainer = document.getElementById('sprint-winner-container');
+  const actualSprintContainer = document.getElementById('actual-sprint-container');
 
   // --- NEW: Conditional logic for sprint races ---
   if (data.isSprintWeekend) {
@@ -64,10 +67,14 @@ function updatePage(raceKey) {
     document.getElementById('prediction-sprint-winner').textContent = data.sprintWinner;
     sprintPoleContainer.classList.remove('hidden');
     sprintWinnerContainer.classList.remove('hidden');
+    // Show and fill actual result element
+    document.getElementById('actual-sprint-winner').textContent = data.actualSprintWinner;
+    actualSprintContainer.classList.remove('hidden');
   } else {
     // It's a normal race, so make sure the sprint elements are hidden
     sprintPoleContainer.classList.add('hidden');
     sprintWinnerContainer.classList.add('hidden');
+    actualSprintContainer.classList.add('hidden');
   }
 
   // Update Header

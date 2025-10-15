@@ -124,26 +124,29 @@
         </div>
       </main>
 
-      <!-- Right Column: Actual Winner -->
+     <!-- Right Column: Actual Winner -->
       <aside class="lg:col-span-3 space-y-4">
-        <div class="border-2 border-gold p-4 h-full flex flex-col">
+        <div class="border-2 border-gold p-4 h-full flex flex-col items-center">
           <h2 class="text-2xl font-bold text-gold mb-4 uppercase text-center">Actual Winner</h2>
-
-          <!-- Image -->
-          <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+          <div class="w-full max-w-xs border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
             <img id="winner-photo" src="https://placehold.co/400x300/1a1a1a/FFD700?text=Winner's+Photo"
                  alt="Race Winner Photo"
                  class="w-full h-full object-contain" />
           </div>
-
-          <!-- Winner Info -->
           <div class="mt-4 text-center">
             <h3 id="winner-name" class="text-xl font-bold text-gold"><!-- JS --></h3>
             <p id="winner-team" class="text-lg"><!-- JS --></p>
           </div>
+          
+          <!-- NEW: Actual Sprint Winner Section (hidden by default) -->
+          <div id="actual-sprint-container" class="mt-4 text-center hidden w-full max-w-xs">
+              <div class="border border-gold p-2 overflow-hidden">
+                  <h4 class="font-bold text-gold">SPRINT WINNER</h4>
+                  <p id="actual-sprint-winner" class="break-words"><!-- JS --></p>
+              </div>
+          </div>
 
-          <!-- Podium Boxes -->
-          <div class="grid grid-cols-3 gap-2 text-center text-sm mt-4 w-full max-w-xs mx-auto">
+          <div class="grid grid-cols-3 gap-2 text-center text-sm mt-4 w-full max-w-xs">
             <div class="border border-gold p-2 overflow-hidden">
               <h4 class="font-bold text-gold">POLE</h4>
               <p id="actual-pole" class="break-words"><!-- JS --></p>
@@ -155,16 +158,12 @@
             <div class="border border-gold p-2 overflow-hidden">
               <h4 class="font-bold text-gold">3RD</h4>
               <p id="actual-p3" class="break-words"><!-- JS --></p>
-              </div>
-                 <div class="border border-gold p-2 overflow-hidden">
-              <h4 class="font-bold text-gold">winner sprint</h4>
-              <p id="actual-sprint-winner" class="break-words"> <!-- JS --></p>
             </div>
-
           </div>
         </div>
       </aside>
 
+    
     </div>
   </div>
   
