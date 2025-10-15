@@ -2,8 +2,9 @@
 // To add more races or edit predictions, just modify this object.
 const raceData = {
   singapore: {
-    // Prediction Data
-    header: "My Predictions for the Singapore GP ;",
+    // This is NOT a sprint weekend
+    isSprintWeekend: false,
+    header: "My Predictions for the Singapore GP;",
     predictionTitle: "My Predictions For The Upcoming Singapore Grand Prix",
     poorly: "Kimi Antonelli",
     surprise: "Lewis Hamilton",
@@ -12,8 +13,7 @@ const raceData = {
     p2: "Max Verstappen",
     p1: "Oscar Piastri",
     edited: "29-09-2025 6:19PM IST",
-    // Actual Results Data
-    winnerName: "GEORGE RUSSEL",
+    winnerName: "George Russel",
     winnerTeam: "Mercedes",
     winnerPhoto: "https://pbs.twimg.com/media/F9o5yEkXwAEEolE.jpg", 
     actualPole: "G. Russel",
@@ -21,25 +21,27 @@ const raceData = {
     actualP3: "L. Norris",
   },
   usa: {
-    // Prediction Data
-    header: "My Predictions for the United States GP &rarr;",
+    // This IS a sprint weekend
+    isSprintWeekend: true, 
+    header: "My Predictions for the United States GP;",
     predictionTitle: "My Predictions For The Upcoming United States Grand Prix",
-    poorly: "TBD",
-    surprise: "TBD",
-    pole: "TBD",
-    p3: "TBD",
-    p2: "TBD",
-    p1: "TBD",
+    // New Sprint Predictions
+    sprintPole: "Max Verstappen",
+    sprintWinner: "Max Verstappen",
+    // Regular Predictions
+    poorly: "Hadjar",
+    surprise: "Charles Leclerc",
+    pole: "Max Verstappen",
+    p3: "Oscar Piastri",
+    p2: "George Russel",
+    p1: "Max Verstappen",
     edited: "15-10-2025 1:11PM IST",
-    // Actual Results Data
     winnerName: "TBD",
     winnerTeam: "TBD",
-    winnerPhoto: "https://placehold.co/400x300/3b82f6/white?text=Max+Verstappen",
+    winnerPhoto: "",
     actualPole: "TBD",
     actualP2: "TBD",
     actualP3: "TBD",
-   
-    
   }
 };
 
@@ -49,6 +51,23 @@ function updatePage(raceKey) {
   if (!data) {
     console.error("No data found for race:", raceKey);
     return;
+  }
+
+  // --- NEW: Get references to the sprint prediction containers ---
+  const sprintPoleContainer = document.getElementById('sprint-pole-container');
+  const sprintWinnerContainer = document.getElementById('sprint-winner-container');
+
+  // --- NEW: Conditional logic for sprint races ---
+  if (data.isSprintWeekend) {
+    // It's a sprint race, so fill the data and show the elements
+    document.getElementById('prediction-sprint-pole').textContent = data.sprintPole;
+    document.getElementById('prediction-sprint-winner').textContent = data.sprintWinner;
+    sprintPoleContainer.classList.remove('hidden');
+    sprintWinnerContainer.classList.remove('hidden');
+  } else {
+    // It's a normal race, so make sure the sprint elements are hidden
+    sprintPoleContainer.classList.add('hidden');
+    sprintWinnerContainer.classList.add('hidden');
   }
 
   // Update Header
@@ -66,7 +85,7 @@ function updatePage(raceKey) {
 
   // Update Actual Winner section
   document.getElementById('winner-photo').src = data.winnerPhoto;
-  document.getElementById('winner-photo').alt = `${data.winnerName} - Photo`; // Good practice for accessibility
+  document.getElementById('winner-photo').alt = `${data.winnerName} - Photo`;
   document.getElementById('winner-name').textContent = data.winnerName;
   document.getElementById('winner-team').textContent = data.winnerTeam;
   document.getElementById('actual-pole').textContent = data.actualPole;
@@ -75,22 +94,19 @@ function updatePage(raceKey) {
 }
 
 // --- EVENT LISTENERS FOR RACE SELECTION ---
-// 'DOMContentLoaded' ensures the script runs only after the HTML page is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
   const raceLinks = document.querySelectorAll('.race-link');
 
   raceLinks.forEach(link => {
     link.addEventListener('click', (event) => {
-      event.preventDefault(); // Prevent page reload
+      event.preventDefault(); 
 
-      // Remove active class from all links and arrows
       raceLinks.forEach(l => {
         l.classList.remove('active');
         l.previousElementSibling.classList.remove('text-gold');
         l.previousElementSibling.classList.add('text-white');
       });
 
-      // Add active class to the clicked link and its arrow
       const clickedLink = event.currentTarget;
       clickedLink.classList.add('active');
       clickedLink.previousElementSibling.classList.add('text-gold');
@@ -102,6 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- INITIAL PAGE LOAD ---
-  // Load the first race's data by default
   updatePage('singapore');
 });
+
