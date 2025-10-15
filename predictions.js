@@ -1,0 +1,107 @@
+// --- DATA FOR ALL RACES ---
+// To add more races or edit predictions, just modify this object.
+const raceData = {
+  singapore: {
+    // Prediction Data
+    header: "My Predictions for the Singapore GP ;",
+    predictionTitle: "My Predictions For The Upcoming Singapore Grand Prix",
+    poorly: "Kimi Antonelli",
+    surprise: "Lewis Hamilton",
+    pole: "Lando Norris",
+    p3: "Lando Norris",
+    p2: "Max Verstappen",
+    p1: "Oscar Piastri",
+    edited: "29-09-2025 6:19PM IST",
+    // Actual Results Data
+    winnerName: "GEORGE RUSSEL",
+    winnerTeam: "Mercedes",
+    winnerPhoto: "https://pbs.twimg.com/media/F9o5yEkXwAEEolE.jpg", 
+    actualPole: "G. Russel",
+    actualP2: "M. Verstappen",
+    actualP3: "L. Norris",
+  },
+  usa: {
+    // Prediction Data
+    header: "My Predictions for the United States GP &rarr;",
+    predictionTitle: "My Predictions For The Upcoming United States Grand Prix",
+    poorly: "TBD",
+    surprise: "TBD",
+    pole: "TBD",
+    p3: "TBD",
+    p2: "TBD",
+    p1: "TBD",
+    edited: "15-10-2025 1:11PM IST",
+    // Actual Results Data
+    winnerName: "TBD",
+    winnerTeam: "TBD",
+    winnerPhoto: "https://placehold.co/400x300/3b82f6/white?text=Max+Verstappen",
+    actualPole: "TBD",
+    actualP2: "TBD",
+    actualP3: "TBD",
+   
+    
+  }
+};
+
+// --- FUNCTION TO UPDATE THE PAGE CONTENT ---
+function updatePage(raceKey) {
+  const data = raceData[raceKey];
+  if (!data) {
+    console.error("No data found for race:", raceKey);
+    return;
+  }
+
+  // Update Header
+  document.getElementById('main-header').textContent = data.header;
+  
+  // Update Predictions
+  document.getElementById('prediction-header').textContent = data.predictionTitle;
+  document.getElementById('prediction-poorly').textContent = data.poorly;
+  document.getElementById('prediction-surprise').textContent = data.surprise;
+  document.getElementById('prediction-pole').textContent = data.pole;
+  document.getElementById('prediction-p3').textContent = data.p3;
+  document.getElementById('prediction-p2').textContent = data.p2;
+  document.getElementById('prediction-p1').textContent = data.p1;
+  document.getElementById('last-edited').textContent = `Last Edited ${data.edited}`;
+
+  // Update Actual Winner section
+  document.getElementById('winner-photo').src = data.winnerPhoto;
+  document.getElementById('winner-photo').alt = `${data.winnerName} - Photo`; // Good practice for accessibility
+  document.getElementById('winner-name').textContent = data.winnerName;
+  document.getElementById('winner-team').textContent = data.winnerTeam;
+  document.getElementById('actual-pole').textContent = data.actualPole;
+  document.getElementById('actual-p2').textContent = data.actualP2;
+  document.getElementById('actual-p3').textContent = data.actualP3;
+}
+
+// --- EVENT LISTENERS FOR RACE SELECTION ---
+// 'DOMContentLoaded' ensures the script runs only after the HTML page is fully loaded.
+document.addEventListener('DOMContentLoaded', () => {
+  const raceLinks = document.querySelectorAll('.race-link');
+
+  raceLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent page reload
+
+      // Remove active class from all links and arrows
+      raceLinks.forEach(l => {
+        l.classList.remove('active');
+        l.previousElementSibling.classList.remove('text-gold');
+        l.previousElementSibling.classList.add('text-white');
+      });
+
+      // Add active class to the clicked link and its arrow
+      const clickedLink = event.currentTarget;
+      clickedLink.classList.add('active');
+      clickedLink.previousElementSibling.classList.add('text-gold');
+      clickedLink.previousElementSibling.classList.remove('text-white');
+
+      const raceKey = clickedLink.dataset.race;
+      updatePage(raceKey);
+    });
+  });
+
+  // --- INITIAL PAGE LOAD ---
+  // Load the first race's data by default
+  updatePage('singapore');
+});
