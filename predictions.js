@@ -33,7 +33,7 @@ const raceData = {
     surprise: "Charles Leclerc",
     pole: "Max Verstappen",
     p3: "Oscar Piastri",
-    p2: "George Russel",
+    p2: "George Russell",
     p1: "Max Verstappen",
     edited: "15-10-2025 1:11PM IST",
     winnerName: "TBD",
