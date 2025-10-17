@@ -26,10 +26,10 @@
       color: #1a1a1a;
     }
     /* Style for the active race link */
-    .race-link.active {
+    .nav-link.active, .race-link.active {
         color: #FFD700;
     }
-    .race-link.active .arrow {
+    .nav-link.active .arrow, .race-link.active .arrow {
         color: #FFD700;
     }
   </style>
@@ -49,119 +49,205 @@
       <!-- Left Column: Navigation -->
       <aside class="lg:col-span-3 space-y-4">
         <div class="border-2 border-gold p-4 h-full">
-          <h2 class="text-2xl font-bold text-gold mb-4 uppercase">Races</h2>
+          <h2 class="text-2xl font-bold text-gold mb-4 uppercase">Menu</h2>
           <ul id="race-list" class="space-y-3">
              <li class="flex items-center">
                <span class="arrow text-gold mr-3">&rarr;</span>
-               <a href="#" class="race-link active transition-colors" data-race="singapore">2025 Singapore GP</a>
+               <a href="#" class="nav-link race-link active transition-colors" data-race="singapore">2025 Singapore GP</a>
              </li>
              <li class="flex items-center">
                <span class="arrow text-white mr-3">&rarr;</span>
-               <a href="#" class="race-link hover:text-gold transition-colors" data-race="usa">2025 United States GP</a>
+               <a href="#" class="nav-link race-link hover:text-gold transition-colors" data-race="usa">2025 United States GP</a>
              </li>
              <li class="flex items-center">
-                <span class="text-gray-500 mr-3">&rarr;</span>
+                <span class="arrow text-gray-500 mr-3">&rarr;</span>
                 <span class="text-gray-500">2025 Mexican GP</span>
              </li>
+            
+              <li class="flex items-center">
+                <span class="arrow text-gray-500 mr-3">&rarr;</span>
+                <span class="text-gray-500">2025 Brazilian GP</span>
+             </li>
+               <li class="flex items-center">
+                <span class="arrow text-gray-500 mr-3">&rarr;</span>
+                <span class="text-gray-500">2025 Las Vegas GP</span>
+             </li>
+              <li class="flex items-center">
+                <span class="arrow text-gray-500 mr-3">&rarr;</span>
+                <span class="text-gray-500">2025 Qatar GP</span>
+             </li>
+              <li class="flex items-center">
+                <span class="arrow text-gray-500 mr-3">&rarr;</span>
+                <span class="text-gray-500">2025 Abu Dabhi GP</span>
+             </li>
+             <li class="flex items-center">
+                <span class="arrow text-white mr-3">&rarr;</span>
+                <a href="#" class="nav-link hover:text-gold transition-colors" data-section="pictures">Do not click here!!!</a>
+              </li>
           </ul>
         </div>
       </aside>
 
-      <!-- Center Column: Predictions -->
-      <main class="lg:col-span-6 space-y-4">
-        <div class="border-2 border-gold p-4 h-full">
-          <h2 class="text-2xl lg:text-3xl font-bold text-center mb-4 text-gold tracking-widest">&lt; PREDICTIONS &gt;</h2>
-          
-          <div class="bg-gold p-4 mb-6">
-            <h3 id="prediction-header" class="text-xl font-bold text-dark uppercase">
-                <!-- This will be updated by JavaScript -->
-            </h3>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-lg">
-            <div>
-              <span class="text-gold font-bold">Will do poorly:</span>
-              <p id="prediction-poorly"><!-- JS --></p>
-            </div>
-            <div>
-              <span class="text-gold font-bold">A good surprise:</span>
-              <p id="prediction-surprise"><!-- JS --></p>
-            </div>
-            <div>
-              <span class="text-gold font-bold">Pole Position:</span>
-              <p id="prediction-pole"><!-- JS --></p>
-            </div>
-              <!-- NEW: Sprint Pole Position (hidden by default) -->
-            <div id="sprint-pole-container" class="hidden">
-              <span class="text-gold font-bold">Sprint Pole:</span>
-              <p id="prediction-sprint-pole"><!-- JS --></p>
-            </div>
-            
-            <!-- NEW: Sprint Winner (hidden by default) -->
-            <div id="sprint-winner-container" class="hidden">
-              <span class="text-gold font-bold">Sprint Winner:</span>
-              <p id="prediction-sprint-winner"><!-- JS --></p>
-            </div>
-            
-
-            <div>
-              <span class="text-gold font-bold">Podium - 3rd:</span>
-              <p id="prediction-p3"><!-- JS --></p>
-            </div>
-            <div>
-              <span class="text-gold font-bold">Podium - 2nd:</span>
-              <p id="prediction-p2"><!-- JS --></p>
-            </div>
-            <div class="bg-gold text-dark p-2 rounded-sm">
-              <span class="font-bold">Winner - 1st:</span>
-              <p id="prediction-p1" class="font-bold"><!-- JS --></p>
-            </div>
-          </div>
-
-          <div class="text-right text-gray-400 text-sm mt-8">
-            <p id="last-edited">Last Edited <!-- JS --></p>
-          </div>
-        </div>
-      </main>
-
-     <!-- Right Column: Actual Winner -->
-      <aside class="lg:col-span-3 space-y-4">
-        <div class="border-2 border-gold p-4 h-full flex flex-col items-center">
-          <h2 class="text-2xl font-bold text-gold mb-4 uppercase text-center">Actual Winner</h2>
-          <div class="w-full max-w-xs border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
-            <img id="winner-photo" src="https://placehold.co/400x300/1a1a1a/FFD700?text=Winner's+Photo"
-                 alt="Race Winner Photo"
-                 class="w-full h-full object-contain" />
-          </div>
-          <div class="mt-4 text-center">
-            <h3 id="winner-name" class="text-xl font-bold text-gold"><!-- JS --></h3>
-            <p id="winner-team" class="text-lg"><!-- JS --></p>
-          </div>
-          
-          <!-- NEW: Actual Sprint Winner Section (hidden by default) -->
-          <div id="actual-sprint-container" class="mt-4 text-center hidden w-full max-w-xs">
-              <div class="border border-gold p-2 overflow-hidden">
-                  <h4 class="font-bold text-gold">SPRINT WINNER</h4>
-                  <p id="actual-sprint-winner" class="break-words"><!-- JS --></p>
+      <!-- Main Content Area -->
+      <div id="content-area" class="lg:col-span-9 grid grid-cols-1 lg:grid-cols-9 gap-4">
+          <!-- Center Column: Predictions -->
+          <main id="predictions-section" class="lg:col-span-6 space-y-4">
+            <div class="border-2 border-gold p-4 h-full">
+              <h2 class="text-2xl lg:text-3xl font-bold text-center mb-4 text-gold tracking-widest">&lt; PREDICTIONS &gt;</h2>
+              
+              <div class="bg-gold p-4 mb-6">
+                <h3 id="prediction-header" class="text-xl font-bold text-dark uppercase">
+                    <!-- This will be updated by JavaScript -->
+                </h3>
               </div>
-          </div>
 
-          <div class="grid grid-cols-3 gap-2 text-center text-sm mt-4 w-full max-w-xs">
-            <div class="border border-gold p-2 overflow-hidden">
-              <h4 class="font-bold text-gold">POLE</h4>
-              <p id="actual-pole" class="break-words"><!-- JS --></p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 text-lg">
+                <div>
+                  <span class="text-gold font-bold">Will do poorly:</span>
+                  <p id="prediction-poorly"><!-- JS --></p>
+                </div>
+                <div>
+                  <span class="text-gold font-bold">A good surprise:</span>
+                  <p id="prediction-surprise"><!-- JS --></p>
+                </div>
+                <div>
+                  <span class="text-gold font-bold">Pole Position:</span>
+                  <p id="prediction-pole"><!-- JS --></p>
+                </div>
+                  <!-- NEW: Sprint Pole Position (hidden by default) -->
+                <div id="sprint-pole-container" class="hidden">
+                  <span class="text-gold font-bold">Sprint Pole:</span>
+                  <p id="prediction-sprint-pole"><!-- JS --></p>
+                </div>
+                
+                <!-- NEW: Sprint Winner (hidden by default) -->
+                <div id="sprint-winner-container" class="hidden">
+                  <span class="text-gold font-bold">Sprint Winner:</span>
+                  <p id="prediction-sprint-winner"><!-- JS --></p>
+                </div>
+                
+
+                <div>
+                  <span class="text-gold font-bold">Podium - 3rd:</span>
+                  <p id="prediction-p3"><!-- JS --></p>
+                </div>
+                <div>
+                  <span class="text-gold font-bold">Podium - 2nd:</span>
+                  <p id="prediction-p2"><!-- JS --></p>
+                </div>
+                <div class="bg-gold text-dark p-2 rounded-sm">
+                  <span class="font-bold">Winner - 1st:</span>
+                  <p id="prediction-p1" class="font-bold"><!-- JS --></p>
+                </div>
+              </div>
+
+              <div class="text-right text-gray-400 text-sm mt-8">
+                <p id="last-edited">Last Edited <!-- JS --></p>
+              </div>
             </div>
-            <div class="border border-gold p-2 overflow-hidden">
-              <h4 class="font-bold text-gold">2ND</h4>
-              <p id="actual-p2" class="break-words"><!-- JS --></p>
+          </main>
+
+         <!-- Right Column: Actual Winner -->
+          <aside id="winner-section" class="lg:col-span-3 space-y-4">
+            <div class="border-2 border-gold p-4 h-full flex flex-col items-center">
+              <h2 class="text-2xl font-bold text-gold mb-4 uppercase text-center">Actual Winner</h2>
+              <div class="w-full max-w-xs border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                <img id="winner-photo" src="https://placehold.co/400x300/1a1a1a/FFD700?text=Winner's+Photo"
+                     alt="Race Winner Photo"
+                     class="w-full h-full object-contain" />
+              </div>
+              <div class="mt-4 text-center">
+                <h3 id="winner-name" class="text-xl font-bold text-gold"><!-- JS --></h3>
+                <p id="winner-team" class="text-lg"><!-- JS --></p>
+              </div>
+              
+              <!-- NEW: Actual Sprint Winner Section (hidden by default) -->
+              <div id="actual-sprint-container" class="mt-4 text-center hidden w-full max-w-xs">
+                  <div class="border border-gold p-2 overflow-hidden">
+                      <h4 class="font-bold text-gold">SPRINT WINNER</h4>
+                      <p id="actual-sprint-winner" class="break-words"><!-- JS --></p>
+                  </div>
+              </div>
+
+              <div class="grid grid-cols-3 gap-2 text-center text-sm mt-4 w-full max-w-xs">
+                <div class="border border-gold p-2 overflow-hidden">
+                  <h4 class="font-bold text-gold">POLE</h4>
+                  <p id="actual-pole" class="break-words"><!-- JS --></p>
+                </div>
+                <div class="border border-gold p-2 overflow-hidden">
+                  <h4 class="font-bold text-gold">2ND</h4>
+                  <p id="actual-p2" class="break-words"><!-- JS --></p>
+                </div>
+                <div class="border border-gold p-2 overflow-hidden">
+                  <h4 class="font-bold text-gold">3RD</h4>
+                  <p id="actual-p3" class="break-words"><!-- JS --></p>
+                </div>
+              </div>
             </div>
-            <div class="border border-gold p-2 overflow-hidden">
-              <h4 class="font-bold text-gold">3RD</h4>
-              <p id="actual-p3" class="break-words"><!-- JS --></p>
+          </aside>
+          
+          <!-- Pictures Section -->
+          <main id="pictures-section" class="lg:col-span-9 space-y-4 hidden">
+            <div class="border-2 border-gold p-4 h-full">
+              <h2 class="text-2xl lg:text-3xl font-bold text-center mb-4 text-gold tracking-widest">&lt; Osama bin russell corner &gt;</h2>
+              
+              <p style="padding-bottom: 20px;"> What if dogs were racist? Would they care about fur color….. “son, only play with other tan dogs”? Or maybe it would depend on breed, “honey, only play with other German Shepards, never poodles”. Better yet it could depend on occupation. “I’m a sled dog while you’re only a running companion, leave me alone”. Maybe the neighborhood they live in could be the way they choose which dogs to associate with and which to shun? Size could be the determining factor, “see how tall that dog is, they are probably dumb”. Luckily dogs don’t discriminate. Just watch at a dog park. Big black and white dogs wag their tails and play with tiny tan dogs. A service dog chases after the same ball as the off-duty police dog. So if dogs don’t discriminate then why do we?</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Replace these with your actual pictures -->
+
+                <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://pbs.twimg.com/media/G2bf4L_XsAAkK7P?format=jpg&name=small"
+                         alt="al_qaeda_jpj"
+                         class="w-full h-full object-contain" />
+                        
+                </div>
+              
+                <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSCQgOTrUEOlZT8-wcdbochYUAYGOdYogeiA&s"
+                         alt="lc_jpj"
+                         class="w-full h-full object-contain" />
+                </div>
+
+              
+                <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://placehold.co/400x300/1a1a1a/FFD700?text=Max"
+                         alt="Placeholder Picture 3"
+                         class="w-full h-full object-contain" />
+                </div>
+                 <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://placehold.co/400x300/1a1a1a/FFD700?text=is"
+                         alt="Placeholder Picture 6"
+                         class="w-full h-full object-contain" />
+                </div>
+                 <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://placehold.co/400x300/1a1a1a/FFD700?text=Going"
+                         alt="Placeholder Picture 4"
+                         class="w-full h-full object-contain" />
+                </div>
+                 <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://placehold.co/400x300/1a1a1a/FFD700?text=to"
+                         alt="Placeholder Picture 6"
+                         class="w-full h-full object-contain" />
+                </div>
+                 <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://placehold.co/400x300/1a1a1a/FFD700?text=Win"
+                         alt="Placeholder Picture 5"
+                         class="w-full h-full object-contain" />
+                </div>
+                 <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://placehold.co/400x300/1a1a1a/FFD700?text=the"
+                         alt="Placeholder Picture 6"
+                         class="w-full h-full object-contain" />
+                </div>
+                 <div class="w-full border-2 border-gold flex justify-center items-center bg-[#1a1a1a] aspect-[4/3] overflow-hidden">
+                    <img src="https://placehold.co/400x300/1a1a1a/FFD700?text=title."
+                         alt="Placeholder Picture 6"
+                         class="w-full h-full object-contain" />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </aside>
+          </main>
+      </div>
 
     
     </div>

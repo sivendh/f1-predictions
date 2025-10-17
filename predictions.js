@@ -12,7 +12,7 @@ const raceData = {
     p3: "Lando Norris",
     p2: "Max Verstappen",
     p1: "Oscar Piastri",
-    edited: "29-09-2025 6:19PM IST",
+    edited: "16-10-2025 7:36PM IST",
     winnerName: "George Russell",
     winnerTeam: "Mercedes",
     winnerPhoto: "https://pbs.twimg.com/media/F9o5yEkXwAEEolE.jpg", 
@@ -35,10 +35,10 @@ const raceData = {
     p3: "Oscar Piastri",
     p2: "George Russell",
     p1: "Max Verstappen",
-    edited: "15-10-2025 1:11PM IST",
+    edited: "16-10-2025 7:36PM IST",
     winnerName: "TBD",
     winnerTeam: "TBD",
-    winnerPhoto: "",
+    winnerPhoto: "https://placehold.co/400x300/1a1a1a/FFD700?text=Winner's+Photo",
     actualPole: "TBD",
     actualP2: "TBD",
     actualP3: "TBD",
@@ -47,20 +47,20 @@ const raceData = {
   }
 };
 
-// --- FUNCTION TO UPDATE THE PAGE CONTENT ---
-function updatePage(raceKey) {
+// --- FUNCTION TO UPDATE THE PAGE CONTENT FOR RACES ---
+function updateRacePage(raceKey) {
   const data = raceData[raceKey];
   if (!data) {
     console.error("No data found for race:", raceKey);
     return;
   }
 
-  // --- NEW: Get references to the sprint prediction containers ---
+  // --- Get references to the sprint prediction containers ---
   const sprintPoleContainer = document.getElementById('sprint-pole-container');
   const sprintWinnerContainer = document.getElementById('sprint-winner-container');
   const actualSprintContainer = document.getElementById('actual-sprint-container');
 
-  // --- NEW: Conditional logic for sprint races ---
+  // --- Conditional logic for sprint races ---
   if (data.isSprintWeekend) {
     // It's a sprint race, so fill the data and show the elements
     document.getElementById('prediction-sprint-pole').textContent = data.sprintPole;
@@ -100,15 +100,20 @@ function updatePage(raceKey) {
   document.getElementById('actual-p3').textContent = data.actualP3;
 }
 
-// --- EVENT LISTENERS FOR RACE SELECTION ---
+// --- EVENT LISTENERS FOR NAVIGATION ---
 document.addEventListener('DOMContentLoaded', () => {
-  const raceLinks = document.querySelectorAll('.race-link');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const predictionsSection = document.getElementById('predictions-section');
+  const winnerSection = document.getElementById('winner-section');
+  const picturesSection = document.getElementById('pictures-section');
+  const mainHeader = document.getElementById('main-header');
 
-  raceLinks.forEach(link => {
+  navLinks.forEach(link => {
     link.addEventListener('click', (event) => {
       event.preventDefault(); 
 
-      raceLinks.forEach(l => {
+      // Update active link styling
+      navLinks.forEach(l => {
         l.classList.remove('active');
         l.previousElementSibling.classList.remove('text-gold');
         l.previousElementSibling.classList.add('text-white');
@@ -119,12 +124,25 @@ document.addEventListener('DOMContentLoaded', () => {
       clickedLink.previousElementSibling.classList.add('text-gold');
       clickedLink.previousElementSibling.classList.remove('text-white');
 
+      const section = clickedLink.dataset.section;
       const raceKey = clickedLink.dataset.race;
-      updatePage(raceKey);
+
+      // Show/Hide sections
+      if (section === 'pictures') {
+        mainHeader.textContent = "i said do not click.";
+        picturesSection.classList.remove('hidden');
+        predictionsSection.classList.add('hidden');
+        winnerSection.classList.add('hidden');
+      } else if (raceKey) {
+        picturesSection.classList.add('hidden');
+        predictionsSection.classList.remove('hidden');
+        winnerSection.classList.remove('hidden');
+        updateRacePage(raceKey);
+      }
     });
   });
 
   // --- INITIAL PAGE LOAD ---
-  updatePage('singapore');
+  // Load the first race by default
+  updateRacePage('singapore');
 });
-
