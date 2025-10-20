@@ -36,14 +36,14 @@ const raceData = {
     p2: "George Russell",
     p1: "Max Verstappen",
     edited: "16-10-2025 7:36PM IST",
-    winnerName: "TBD",
-    winnerTeam: "TBD",
-    winnerPhoto: "https://placehold.co/400x300/1a1a1a/FFD700?text=Winner's+Photo",
-    actualPole: "TBD",
-    actualP2: "TBD",
-    actualP3: "TBD",
+    winnerName: "Max Verstappen",
+    winnerTeam: "Red Bull",
+    winnerPhoto: "https://i.pinimg.com/originals/78/b5/ac/78b5ac107f5734193cb8c9c3e0d5b86a.jpg",
+    actualPole: "M. Verstappen",
+    actualP2: "L. Norris",
+    actualP3: "C. Leclerc",
       // New property for actual sprint winner
-    actualSprintWinner: "TBD",
+    actualSprintWinner: "Max Verstappen",
   }
 };
 
