@@ -44,6 +44,25 @@ const raceData = {
     actualP3: "C. Leclerc",
       // New property for actual sprint winner
     actualSprintWinner: "Max Verstappen",
+  },
+  mexico: {
+      // This is NOT a sprint weekend
+    isSprintWeekend: false,
+    header: "My Predictions for the Mexican GP:",
+    predictionTitle: "My Predictions For The Upcoming Mexican Grand Prix",
+    poorly: "George Russell",
+    surprise: "Oscar Piastri",
+    pole: "Max Verstappen",
+    p3: "Charles Leclerc",
+    p2: "Oscar Piastri",
+    p1: "Max Verstappen",
+    edited: "24-10-2025 7:21PM IST",
+    winnerName: "TBD",
+    winnerTeam: "TBD",
+    winnerPhoto: "TBD", 
+    actualPole: "TBD",
+    actualP2: "TBD",
+    actualP3: "TBD",
   }
 };
 
@@ -129,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Show/Hide sections
       if (section === 'pictures') {
-        mainHeader.textContent = "i said do not click.";
+        mainHeader.textContent = "my driver ratings (2025 singapore-).";
         picturesSection.classList.remove('hidden');
         predictionsSection.classList.add('hidden');
         winnerSection.classList.add('hidden');
