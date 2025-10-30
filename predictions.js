@@ -57,12 +57,12 @@ const raceData = {
     p2: "Oscar Piastri",
     p1: "Max Verstappen",
     edited: "24-10-2025 7:21PM IST",
-    winnerName: "TBD",
-    winnerTeam: "TBD",
-    winnerPhoto: "TBD", 
-    actualPole: "TBD",
-    actualP2: "TBD",
-    actualP3: "TBD",
+    winnerName: "Lando Norris",
+    winnerTeam: "Mclaren",
+    winnerPhoto: "https://pbs.twimg.com/media/EUlYIJCUcAA0LDA.jpg", 
+    actualPole: "L. Norris",
+    actualP2: "C. Leclerc",
+    actualP3: "M. Verstappen",
   }
 };
 
