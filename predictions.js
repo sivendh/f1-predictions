@@ -81,13 +81,13 @@ const raceData = {
     p1: "Max Verstappen",
     edited: "06-11-2025 1:32PM IST",
     winnerName: "TBD",
-    winnerTeam: "Red Bull",
-    winnerPhoto: "",
+    winnerTeam: "TBD",
+    winnerPhoto: "TBD",
     actualPole: "TBD",
     actualP2: "TBD",
     actualP3: "TBD",
       // New property for actual sprint winner
-    actualSprintWinner: "Max Verstappen",
+    actualSprintWinner: "TBD",
   }
 };
 
