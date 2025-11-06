@@ -64,7 +64,7 @@ const raceData = {
     actualP2: "C. Leclerc",
     actualP3: "M. Verstappen",
   },
-   usa: {
+   brazil: {
     // This IS a sprint weekend
     isSprintWeekend: true, 
     header: "My Predictions for the Brazilian GP:",
