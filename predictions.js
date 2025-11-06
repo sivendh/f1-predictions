@@ -63,6 +63,31 @@ const raceData = {
     actualPole: "L. Norris",
     actualP2: "C. Leclerc",
     actualP3: "M. Verstappen",
+  },
+   usa: {
+    // This IS a sprint weekend
+    isSprintWeekend: true, 
+    header: "My Predictions for the Brazilian GP:",
+    predictionTitle: "My Predictions For The Upcoming Brazilian Grand Prix",
+    // New Sprint Predictions
+    sprintPole: "Max Verstappen",
+    sprintWinner: "Max Verstappen",
+    // Regular Predictions
+    poorly: "Ollie Bearman",
+    surprise: "Lewis Hamilton",
+    pole: "Lando Norris",
+    p3: "Lewis Hamilton",
+    p2: "Charles Leclerc",
+    p1: "Max Verstappen",
+    edited: "06-11-2025 1:32PM IST",
+    winnerName: "TBD",
+    winnerTeam: "Red Bull",
+    winnerPhoto: "",
+    actualPole: "TBD",
+    actualP2: "TBD",
+    actualP3: "TBD",
+      // New property for actual sprint winner
+    actualSprintWinner: "Max Verstappen",
   }
 };
 
