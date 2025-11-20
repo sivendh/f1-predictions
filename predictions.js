@@ -80,15 +80,42 @@ const raceData = {
     p2: "Charles Leclerc",
     p1: "Max Verstappen",
     edited: "06-11-2025 1:32PM IST",
+    winnerName: "L. Norris",
+    winnerTeam: "Mclaren",
+    winnerPhoto: "https://pbs.twimg.com/media/EUlYIJCUcAA0LDA.jpg",
+    actualPole: "L. Norris",
+    actualP2: "K. Antonelli",
+    actualP3: "M. Verstappen",
+      // New property for actual sprint winner
+    actualSprintWinner: "L . Norris",
+  },
+
+  vegas: {
+      // This is NOT a sprint weekend
+    isSprintWeekend: false,
+    header: "My Predictions for the Las Vegas GP:",
+    predictionTitle: "My Predictions For The Upcoming Las Vegas Grand Prix",
+    poorly: "George Russell",
+    surprise: "Lewis Hamilton",
+    pole: "Max Verstappen",
+    p3: "Lando Norris",
+    p2: "Kimi Antonelli",
+    p1: "Max Verstappen",
+    edited: "20-11-2025 12:33PM IST",
     winnerName: "TBD",
     winnerTeam: "TBD",
-    winnerPhoto: "TBD",
+    winnerPhoto: "", 
     actualPole: "TBD",
     actualP2: "TBD",
-    actualP3: "TBD",
-      // New property for actual sprint winner
-    actualSprintWinner: "TBD",
+    actualP3: "TBD"
   }
+
+
+
+
+
+
+
 };
 
 // --- FUNCTION TO UPDATE THE PAGE CONTENT FOR RACES ---
